@@ -33,7 +33,7 @@ export default function Conteudo() {
     
     const [chat, setChat] = useState([]);
     const [sala, setSala] = useState('');
-    const [usu, setUsu] = useState(usuarioLogado.nm_usuario);
+    const [usu] = useState(usuarioLogado.nm_usuario);
     const [msg, setMsg] = useState('')
 
     const loading = useRef(null);
@@ -59,7 +59,7 @@ export default function Conteudo() {
     }
 
     const enviarMensagem = async (event) => {
-        if (event.type == "keypress" && (!event.ctrlKey || event.charCode != 13))
+        if (event.type === "keypress" && (!event.ctrlKey || event.charCode !== 13))
             return;
 
         const resp = await api.inserirMensagem(sala, usu, msg);
